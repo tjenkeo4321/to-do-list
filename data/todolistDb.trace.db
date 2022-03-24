@@ -1,0 +1,5 @@
+2022-03-24 01:37:42 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM STATE STATE 
+ALTER[*] STATE REMOVE COLUMN STATEID"; SQL statement:
+SELECT * FROM STATE STATE 
+alter STATE remove column stateid [42000-200]
