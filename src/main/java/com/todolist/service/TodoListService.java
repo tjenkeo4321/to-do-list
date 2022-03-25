@@ -1,5 +1,8 @@
 package com.todolist.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -84,5 +87,38 @@ public class TodoListService {
 
 		return savedTask;
 	}
+	
+	public List<TodoListDto> getAllToDoLists(){
+		List<TodoList> listToDoList = todoListRepository.findAll();
+		List<TodoListDto> todoListDtos = new ArrayList<TodoListDto>(); 
+		TodoListDto todoListDto = null;
+		for(TodoList todoList:listToDoList) {
+			todoListDto = new TodoListDto();
+			todoListDto.setName(todoList.getName());
+			todoListDto.setDescription(todoList.getDescription());
+			todoListDtos.add(todoListDto);
+		}
+	 return todoListDtos;	
+	}
+	
+	public List<Task> getAllTasks(){
+		return  taskRepository.findAll();
+	}
+	
+	public List<State> getAllStates(){
+		return  stateRepository.findAll();
+	}
+	
+	public TodoList updateToDoList(TodoList todoList) {
+		TodoList savedTodoList = todoListRepository.getById(todoList.getId());
+		savedTodoList.setDescription(todoList.getDescription());
+		savedTodoList.setName(todoList.getName());
+		return todoListRepository.save(savedTodoList);
+	}
+	
+	public void deleteToDoList(int id) {
+		 todoListRepository.deleteById(id);	
+	}
+	
 
 }
