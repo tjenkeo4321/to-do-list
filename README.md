@@ -20,4 +20,3 @@ ERD diagram is at the path
 ![6 Postman_Update_task](https://user-images.githubusercontent.com/99187387/161153953-e665e9de-2fef-4726-bddc-133dd7983c39.JPG)
 ![7 Postman_Delete_Task](https://user-images.githubusercontent.com/99187387/161153954-d4ed62b0-6979-439a-af2e-1b19c57d3212.JPG)
 ![8 Postman_Delete_tododlist](https://user-images.githubusercontent.com/99187387/161153956-7034d25a-3664-429e-95f1-3ef1b1484a98.JPG)
-
