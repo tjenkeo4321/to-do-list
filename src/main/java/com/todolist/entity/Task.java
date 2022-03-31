@@ -49,12 +49,13 @@ public class Task implements Serializable {
 	@CreationTimestamp
 	private Date createdOn;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name = "todoListId", nullable = false)
+	
+	@ManyToOne 
+	@JoinColumn(name = "todoListId") 
 	private TodoList todoList;
+	 	
 	
-	
-	@OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "stateId", nullable = true)
 	private State state;
 }

@@ -26,9 +26,4 @@ public class State implements Serializable {
 	@Column(length = 300, nullable = false)
 	private String name;
 
-	
-	/*
-	 * @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	 * 
-	 * @JoinColumn(name = "taskId", nullable = false) private Task task;
-	 */}
+}

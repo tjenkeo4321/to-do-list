@@ -2,6 +2,7 @@ package com.todolist.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,16 +62,23 @@ public class TodoListService {
 		TodoList savedTodoList = todoListRepository.save(todoList);
 
 		TodoListDto newToDoListDto = new TodoListDto();
+		newToDoListDto.setId(savedTodoList.getId());
 		newToDoListDto.setName(savedTodoList.getName());
 		newToDoListDto.setDescription(savedTodoList.getDescription());
 
 		return newToDoListDto;
+	}
+	
+	public TodoList updateTodolist(TodoList todoList) {
+		TodoList savedTodoList = todoListRepository.save(todoList);
+		return savedTodoList;
 	}
 
 	/**
 	 * @param taskDto
 	 * @return
 	 */
+	
 	public Task addNewTask(TaskDto taskDto) {
 		Task task = new Task();
 		task.setTitle(taskDto.getTitle());
@@ -94,6 +102,7 @@ public class TodoListService {
 		TodoListDto todoListDto = null;
 		for(TodoList todoList:listToDoList) {
 			todoListDto = new TodoListDto();
+			todoListDto.setId(todoList.getId());
 			todoListDto.setName(todoList.getName());
 			todoListDto.setDescription(todoList.getDescription());
 			todoListDtos.add(todoListDto);
@@ -103,6 +112,11 @@ public class TodoListService {
 	
 	public List<Task> getAllTasks(){
 		return  taskRepository.findAll();
+	}
+	
+	public Task updateTask(Task task) {
+		Task updatedTask = taskRepository.save(task);
+		return updatedTask;
 	}
 	
 	public List<State> getAllStates(){
@@ -116,9 +130,22 @@ public class TodoListService {
 		return todoListRepository.save(savedTodoList);
 	}
 	
-	public void deleteToDoList(int id) {
-		 todoListRepository.deleteById(id);	
+	public Optional<TodoList> getToDoListById(int id) {
+		return todoListRepository.findById(id);
 	}
 	
+	public Optional<Task> getTaskById(int id) {
+		return taskRepository.findById(id);
+	}
+	
+	public void deleteToDoList(TodoList todoList) {
+		 todoListRepository.delete(todoList);
+	}
+	
+	public void deleteTaskById(int id){
+		taskRepository.deleteById(id);
+	}
+	
+    	
 
 }

@@ -17,6 +17,8 @@ public class TaskDto implements Serializable {
 	private String description;
 
 	private int stateId;
+	
+	private String state;
 
 	private int todoListId;
 
